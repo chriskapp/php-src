@@ -34,7 +34,7 @@ static int php_json_escape_string(
 		smart_str *buf,	const char *s, size_t len,
 		int options, php_json_encoder *encoder);
 
-static int php_json_determine_array_type(zval *val) /* {{{ */
+int php_json_determine_array_type(zval *val) /* {{{ */
 {
 	int i;
 	HashTable *myht = Z_ARRVAL_P(val);

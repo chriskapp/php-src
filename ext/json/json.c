@@ -334,7 +334,6 @@ PHP_FUNCTION(json_is_object)
 
 	ZEND_PARSE_PARAMETERS_START(1, 1)
 		Z_PARAM_ZVAL(parameter)
-		Z_PARAM_OPTIONAL
 	ZEND_PARSE_PARAMETERS_END();
 
 	int type = php_json_determine_array_type(parameter);

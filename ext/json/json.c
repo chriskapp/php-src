@@ -326,3 +326,23 @@ PHP_FUNCTION(json_last_error_msg)
 	RETURN_STRING(php_json_get_error_msg(JSON_G(error_code)));
 }
 /* }}} */
+
+/* {{{ Returns whether the data structure represents an object. */
+PHP_FUNCTION(json_is_object)
+{
+	zval *parameter;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_ZVAL(parameter)
+		Z_PARAM_OPTIONAL
+	ZEND_PARSE_PARAMETERS_END();
+
+	int type = php_json_determine_array_type(parameter);
+
+	if (type == PHP_JSON_OUTPUT_OBJECT) {
+		RETURN_BOOL(true);
+	} else {
+		RETURN_BOOL(false);
+	}
+}
+/* }}} */

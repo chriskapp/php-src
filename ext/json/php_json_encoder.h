@@ -35,4 +35,6 @@ static inline void php_json_encode_init(php_json_encoder *encoder)
 
 int php_json_encode_zval(smart_str *buf, zval *val, int options, php_json_encoder *encoder);
 
+static int php_json_determine_array_type(zval *val);
+
 #endif	/* PHP_JSON_ENCODER_H */

@@ -949,6 +949,12 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_MASK_EX(arginfo_substr_replace, 0, 3, MAY_BE_STR
 	ZEND_ARG_TYPE_MASK(0, length, MAY_BE_ARRAY|MAY_BE_LONG|MAY_BE_NULL, "null")
 ZEND_END_ARG_INFO()
 
+#define arginfo_str_is_null_or_empty
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_str_is_null_or_empty, 0, 1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, string, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
 #define arginfo_quotemeta arginfo_base64_encode
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_ord, 0, 1, IS_LONG, 0)
@@ -2590,6 +2596,7 @@ ZEND_FUNCTION(strrchr);
 ZEND_FUNCTION(str_contains);
 ZEND_FUNCTION(str_starts_with);
 ZEND_FUNCTION(str_ends_with);
+ZEND_FUNCTION(str_is_null_or_empty);
 ZEND_FUNCTION(chunk_split);
 ZEND_FUNCTION(substr);
 ZEND_FUNCTION(substr_replace);
@@ -3231,6 +3238,7 @@ static const zend_function_entry ext_functions[] = {
 	ZEND_RAW_FENTRY("str_contains", zif_str_contains, arginfo_str_contains, ZEND_ACC_COMPILE_TIME_EVAL, frameless_function_infos_str_contains, NULL)
 	ZEND_RAW_FENTRY("str_starts_with", zif_str_starts_with, arginfo_str_starts_with, ZEND_ACC_COMPILE_TIME_EVAL, frameless_function_infos_str_starts_with, NULL)
 	ZEND_RAW_FENTRY("str_ends_with", zif_str_ends_with, arginfo_str_ends_with, ZEND_ACC_COMPILE_TIME_EVAL, NULL, NULL)
+	ZEND_RAW_FENTRY("str_is_null_or_empty", zif_str_is_null_or_empty, arginfo_str_is_null_or_empty, ZEND_ACC_COMPILE_TIME_EVAL, NULL, NULL)
 	ZEND_RAW_FENTRY("chunk_split", zif_chunk_split, arginfo_chunk_split, ZEND_ACC_COMPILE_TIME_EVAL, NULL, NULL)
 	ZEND_RAW_FENTRY("substr", zif_substr, arginfo_substr, ZEND_ACC_COMPILE_TIME_EVAL, frameless_function_infos_substr, NULL)
 	ZEND_RAW_FENTRY("substr_replace", zif_substr_replace, arginfo_substr_replace, ZEND_ACC_COMPILE_TIME_EVAL, NULL, NULL)

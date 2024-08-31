@@ -1928,6 +1928,19 @@ PHP_FUNCTION(str_ends_with)
 }
 /* }}} */
 
+/* {{{ Checks whether a string is null or empty */
+PHP_FUNCTION(str_is_null_or_empty)
+{
+	zend_string *string = NULL;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_STR_OR_NULL(string)
+	ZEND_PARSE_PARAMETERS_END();
+
+	RETURN_BOOL(!string || ZSTR_LEN(string) == 0);
+}
+/* }}} */
+
 static inline void _zend_strpos(zval *return_value, zend_string *haystack, zend_string *needle, zend_long offset)
 {
 	const char *found = NULL;
